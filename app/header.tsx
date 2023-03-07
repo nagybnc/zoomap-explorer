@@ -11,6 +11,24 @@ export default async function Header() {
       <Link href="/" className="hidden cursor-pointer sm:block">
         🌎 ZooMap Explorer
       </Link>
+      <ul className="flex space-x-4 md:text-sm md:font-medium">
+        <li className="cursor-pointer">
+          <Link
+            href="/"
+            className="block py-2 text-blue-700 hover:text-blue-700"
+          >
+            Home
+          </Link>
+        </li>
+        <li className="cursor-pointer">
+          <Link
+            href="/map"
+            className="block py-2 text-gray-700 hover:text-blue-700"
+          >
+            Map
+          </Link>
+        </li>
+      </ul>
       <div>
         {session?.user ? (
           <div className="flex items-center gap-6">
