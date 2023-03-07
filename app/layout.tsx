@@ -16,6 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* eslint-disable-next-line @next/next/no-css-tags*/}
+        <link rel="stylesheet" href="cesium/Widgets/widgets.css" />
+      </head>
       <body className="flex h-screen flex-col justify-between">
         <Providers>
           {/** @ts-expect-error */}
