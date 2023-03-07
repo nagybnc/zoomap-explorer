@@ -63,7 +63,7 @@ function GoogleAutocompletePredictions({ types }: any) {
       <p>{suggestionsStatus?.toString()}</p>
       <div className="relative w-full" ref={containerRef}>
         <input
-          className="mt-4 h-12 w-full border-2 border-gray-300 px-4 outline-none"
+          className="h-12 w-full border-2 border-gray-300 px-4 outline-none"
           type="text"
           value={text}
           ref={inputRef}
