@@ -1,9 +1,14 @@
 "use client";
+import { Zoo } from "@/lib/types";
+import { RootState } from "@/store";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import GoogleAutocompletePredictions from "../GoogleAutocompletePredictions";
+import ZooListItem from "./ZooListItem";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { items, selectedZoo } = useSelector((state: RootState) => state.zoos);
 
   return (
     <div>
@@ -50,7 +55,21 @@ function Sidebar() {
             </h5>
           </div>
           <div className="flow-root">
-            <p>No Pinned Items</p>
+            {Object.values(items).length > 0 ? (
+              <ul role="list" className="divide-y divide-gray-200">
+                {Object.values(items).map((zoo: Zoo) => {
+                  return (
+                    <ZooListItem
+                      key={zoo.id}
+                      zoo={zoo}
+                      selectedZoo={selectedZoo}
+                    />
+                  );
+                })}
+              </ul>
+            ) : (
+              <p>No Pinned Items</p>
+            )}
           </div>
         </div>
       </aside>

@@ -15,7 +15,7 @@ function Map() {
           return <p key={zoo.id}>{zoo.name}</p>;
         })}
         <strong>SelectedPlace:</strong>
-        {selectedZoo && items?.selectedZoo?.name}
+        {selectedZoo && selectedZoo?.name}
       </>
     </div>
   );
