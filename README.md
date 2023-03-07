@@ -1,4 +1,4 @@
-# ZooMap Explorer
+# 🌎 ZooMap Explorer
 
 ## Overview
 
