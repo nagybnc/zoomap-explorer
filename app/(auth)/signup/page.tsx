@@ -1,11 +1,24 @@
 "use client";
+import { useFormik } from "formik";
 import Link from "next/link";
 import React from "react";
+import { signUpValidate } from "../../../lib/auth/validate";
 import styles from "../Auth.module.css";
 
 function SignUp() {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      cpassword: "",
+    },
+    validate: signUpValidate,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
   return (
-    <form className="space-y-6">
+    <form className="space-y-6" onSubmit={formik.handleSubmit}>
       <h5 className="text-xl font-medium text-gray-900 ">
         Sign up to our platform
       </h5>
@@ -19,7 +32,11 @@ function SignUp() {
           className={styles.input}
           placeholder="elon@musk.com"
           required
+          {...formik.getFieldProps("email")}
         />
+        {formik.errors.email && formik.touched.email ? (
+          <span className="text-red-500">{formik.errors.email}</span>
+        ) : null}
       </div>
       <div>
         <label htmlFor="password" className={styles.label}>
@@ -31,7 +48,11 @@ function SignUp() {
           placeholder="••••••••"
           className={styles.input}
           required
+          {...formik.getFieldProps("password")}
         />
+        {formik.errors.password && formik.touched.password ? (
+          <span className="text-red-500">{formik.errors.password}</span>
+        ) : null}
       </div>
 
       <div>
@@ -44,7 +65,11 @@ function SignUp() {
           placeholder="••••••••"
           className={styles.input}
           required
+          {...formik.getFieldProps("cpassword")}
         />
+        {formik.errors.cpassword && formik.touched.cpassword ? (
+          <span className="text-red-500">{formik.errors.cpassword}</span>
+        ) : null}
       </div>
 
       <button
