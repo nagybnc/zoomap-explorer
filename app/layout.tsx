@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Footer from "./footer";
 import "./globals.css";
 import Header from "./header";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex h-screen flex-col justify-between">
-        {/** @ts-expect-error */}
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <Providers>
+          {/** @ts-expect-error */}
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
