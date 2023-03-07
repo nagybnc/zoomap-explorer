@@ -4,7 +4,7 @@ import React from "react";
 import { SignInWithGithub } from "../actions";
 import styles from "../Auth.module.css";
 import { useFormik } from "formik";
-import { loginValidate } from "../../../lib/auth/validate";
+import { signInValidate } from "../../../lib/auth/validate";
 import { signIn } from "next-auth/react";
 
 function SignIn() {
@@ -13,7 +13,7 @@ function SignIn() {
       email: "",
       password: "",
     },
-    validate: loginValidate,
+    validate: signInValidate,
     onSubmit: async (values) => {
       return await signIn("credentials", {
         email: values.email,
@@ -75,9 +75,9 @@ function SignIn() {
           </Link>
         </div>
       </form>
-      <div className="inline-flex items-center justify-center w-full">
-        <hr className="w-full h-px my-8 bg-gray-200 border-0" />
-        <span className="absolute px-3 text-gray-500 -translate-x-1/2 bg-white left-1/2">
+      <div className="inline-flex w-full items-center justify-center">
+        <hr className="my-8 h-px w-full border-0 bg-gray-200" />
+        <span className="absolute left-1/2 -translate-x-1/2 bg-white px-3 text-gray-500">
           OR
         </span>
       </div>

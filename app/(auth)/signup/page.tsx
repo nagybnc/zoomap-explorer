@@ -1,11 +1,13 @@
 "use client";
 import { useFormik } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { signUpValidate } from "../../../lib/auth/validate";
 import styles from "../Auth.module.css";
 
 function SignUp() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -13,8 +15,20 @@ function SignUp() {
       cpassword: "",
     },
     validate: signUpValidate,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      };
+
+      await fetch(`${window.location.origin}/api/auth/signup`, options)
+        .then((res) => res.json)
+        .then((data) => {
+          {
+            router.push("/signin");
+          }
+        });
     },
   });
   return (
