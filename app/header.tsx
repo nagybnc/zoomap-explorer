@@ -15,8 +15,8 @@ export default async function Header() {
       <Navbar />
       <div>
         {session?.user ? (
-          <div className="flex items-center gap-6">
-            <div className="hidden sm:block">
+          <div className="flex items-center gap-2 sm:gap-6">
+            <div>
               {session.user.image ? (
                 <Image
                   className="rounded-full p-1 ring-2 ring-gray-300"
@@ -42,7 +42,7 @@ export default async function Header() {
                 </div>
               )}
             </div>
-            <span className="flex flex-col">
+            <span className="hidden sm:flex sm:flex-col">
               <small>Signed in as</small>
               <strong>{session.user.email ?? session.user.name}</strong>
             </span>

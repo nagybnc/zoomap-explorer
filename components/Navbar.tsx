@@ -23,7 +23,7 @@ export default function Navbar() {
           <li key={path} className="cursor-pointer">
             <Link
               href={path}
-              className={`block py-2 ${
+              className={`block py-2 text-lg ${
                 isActive
                   ? "text-blue-700 underline underline-offset-2"
                   : "hover:text-blue-800 hover:underline hover:underline-offset-2"
