@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "jest --watch",
     "lint": "next lint",
     "postinstall": "symlink-dir node_modules/cesium/Build/Cesium public/cesium"
   },
@@ -19,6 +20,7 @@
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
     "formik": "^2.2.9",
+    "jest-environment-jsdom": "^29.5.0",
     "mongoose": "^7.0.1",
     "next": "13.2.3",
     "next-auth": "^4.20.1",
@@ -29,9 +31,12 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/google.maps": "^3.52.1",
     "autoprefixer": "^10.4.13",
+    "jest": "^29.5.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.4",
