@@ -1,5 +1,7 @@
 import { Metadata } from "next";
+import Footer from "./footer";
 import "./globals.css";
+import Header from "./header";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -13,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="flex h-screen flex-col justify-between">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
