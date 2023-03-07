@@ -2,6 +2,7 @@ import { SignOut } from "./(auth)/actions";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
 export default async function Header() {
   const session = await getServerSession();
@@ -11,28 +12,11 @@ export default async function Header() {
       <Link href="/" className="hidden cursor-pointer sm:block">
         🌎 ZooMap Explorer
       </Link>
-      <ul className="flex space-x-4 md:text-sm md:font-medium">
-        <li className="cursor-pointer">
-          <Link
-            href="/"
-            className="block py-2 text-blue-700 hover:text-blue-700"
-          >
-            Home
-          </Link>
-        </li>
-        <li className="cursor-pointer">
-          <Link
-            href="/map"
-            className="block py-2 text-gray-700 hover:text-blue-700"
-          >
-            Map
-          </Link>
-        </li>
-      </ul>
+      <Navbar />
       <div>
         {session?.user ? (
-          <div className="flex items-center gap-6">
-            <div className="hidden sm:block">
+          <div className="flex items-center gap-2 sm:gap-6">
+            <div>
               {session.user.image ? (
                 <Image
                   className="rounded-full p-1 ring-2 ring-gray-300"
@@ -58,7 +42,7 @@ export default async function Header() {
                 </div>
               )}
             </div>
-            <span className="flex flex-col">
+            <span className="hidden sm:flex sm:flex-col">
               <small>Signed in as</small>
               <strong>{session.user.email ?? session.user.name}</strong>
             </span>
