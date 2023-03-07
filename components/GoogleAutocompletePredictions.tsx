@@ -4,6 +4,8 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import useDebounce from "../hooks/useDebounce";
 import { getPlacePredictions } from "../lib/utils";
 import { useOutsideClick } from "../hooks/useOutsideClick";
+import { useAppDispatch } from "@/store";
+import { addZoo, setSelectedZoo } from "@/store/zoosSlice";
 
 interface GoogleAutocompletePredictions {
   types: string[];
@@ -22,6 +24,7 @@ function GoogleAutocompletePredictions({ types }: any) {
   const [suggestionsStatus, setSuggestionsStatus] =
     useState<ZooAutocompletePrediction | null>(null);
 
+  const dispatch = useAppDispatch();
   const doQuery = useCallback(async () => {
     const results: any = (await getPlacePredictions(text, types)) || [];
 
@@ -60,7 +63,7 @@ function GoogleAutocompletePredictions({ types }: any) {
       <p>{suggestionsStatus?.toString()}</p>
       <div className="relative w-full" ref={containerRef}>
         <input
-          className="mt-4 h-12 w-full border-2 border-gray-300 px-4 outline-none"
+          className="h-12 w-full border-2 border-gray-300 px-4 outline-none"
           type="text"
           value={text}
           ref={inputRef}
@@ -91,7 +94,8 @@ function GoogleAutocompletePredictions({ types }: any) {
                     ...getCoordsJson,
                   };
 
-                  console.log(itemWithCoords);
+                  dispatch(addZoo(itemWithCoords));
+                  dispatch(setSelectedZoo(itemWithCoords));
                 }}
               >
                 {item.description}
