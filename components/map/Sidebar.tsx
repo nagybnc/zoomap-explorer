@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import GoogleAutocompletePredictions from "../GoogleAutocompletePredictions";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,6 +42,7 @@ function Sidebar() {
         } lg:translate-x-0`}
         aria-label="Sidebar"
       >
+        <GoogleAutocompletePredictions types={["zoo"]} />
         <div className="mt-4 w-full max-w-md border border-gray-200 bg-white p-4 shadow">
           <div className="mb-4 flex">
             <h5 className="text-xl font-bold leading-none text-gray-900 ">
