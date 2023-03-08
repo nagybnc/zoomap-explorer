@@ -6,7 +6,21 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        heartbeat: "heartbeat 1.5s alternate infinite",
+      },
+      keyframes: {
+        heartbeat: {
+          from: {
+            transform: "scale(1)",
+          },
+          to: {
+            transform: "scale(1.5)",
+          },
+        },
+      },
+    },
   },
   plugins: [],
 };
