@@ -37,8 +37,8 @@ Overall, our Next.js-based application provides users with a seamless and intuit
 ### 1. Clone the repository and install dependencies
 
 ```
-git clone TODO
-cd todo
+git clone https://github.com/nagybnc/zoomap-explorer.git
+cd zoomap-explorer
 npm install
 ```
 
