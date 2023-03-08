@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
         // Check user
         const result: any = await Users.findOne({ email: credentials?.email });
         if (!result) {
-          throw new Error("No user Found with Email Please Sign up...");
+          throw new Error("No user Found with Email. Please Sign up...");
         }
 
         // Compare
