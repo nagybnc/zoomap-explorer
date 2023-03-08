@@ -17,7 +17,7 @@ export default async function handler(
     // Check duplicated users
     const checkExisting = await Users.findOne({ email });
     if (checkExisting)
-      return res.status(422).json({ error: "User Already Exist" });
+      return res.status(422).json({ error: { email: "User Already Exist" } });
 
     // Hash password
     const data = await Users.create({

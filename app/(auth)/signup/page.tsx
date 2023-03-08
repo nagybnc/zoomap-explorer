@@ -15,20 +15,24 @@ function SignUp() {
       cpassword: "",
     },
     validate: signUpValidate,
-    onSubmit: async (values) => {
+    onSubmit: async (values, actions) => {
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       };
 
-      await fetch(`${window.location.origin}/api/auth/signup`, options)
-        .then((res) => res.json)
-        .then((data) => {
-          {
-            router.push("/signin");
-          }
-        });
+      const signupRes = await fetch(
+        `${window.location.origin}/api/auth/signup`,
+        options
+      );
+
+      const signupResJSON = await signupRes.json();
+      if (signupResJSON.error) {
+        actions.setErrors(signupResJSON.error);
+      } else {
+        router.push("/signin");
+      }
     },
   });
   return (

@@ -6,20 +6,28 @@ import styles from "../Auth.module.css";
 import { useFormik } from "formik";
 import { signInValidate } from "../../../lib/auth/validate";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function SignIn() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validate: signInValidate,
-    onSubmit: async (values) => {
-      return await signIn("credentials", {
+    onSubmit: async (values, actions) => {
+      const signInRes = await signIn("credentials", {
+        redirect: false,
         email: values.email,
         password: values.password,
-        callbackUrl: "/map",
       });
+
+      if (signInRes?.ok) {
+        router.push("/");
+      } else {
+        actions.setFieldError("email", signInRes?.error);
+      }
     },
   });
 
