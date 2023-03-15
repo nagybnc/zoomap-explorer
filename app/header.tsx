@@ -6,7 +6,7 @@ export default async function Header() {
   return (
     <header className="flex items-center justify-between bg-gray-50 p-4 shadow-md">
       <Link href="/" className="hidden cursor-pointer sm:block">
-        🌎 ZooMap Explorer
+        🚀 Space Objects Explorer
       </Link>
       <Navbar />
       <UserInformation />

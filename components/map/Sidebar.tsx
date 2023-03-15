@@ -51,7 +51,7 @@ function Sidebar() {
         <div className="mt-4 w-full max-w-md border border-gray-200 bg-white p-4 shadow">
           <div className="mb-4 flex">
             <h5 className="text-xl font-bold leading-none text-gray-900 ">
-              📌 Pinned Zoos
+              📌 Pinned Objects
             </h5>
           </div>
           <div className="flow-root">

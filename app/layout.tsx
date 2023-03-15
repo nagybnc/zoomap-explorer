@@ -6,7 +6,7 @@ import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "🌎 ZooMap Explorer",
+  description: "🚀 Space Objects Explorer",
 };
 
 export default function RootLayout({
