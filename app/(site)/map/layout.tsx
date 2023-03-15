@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+// import { getServerSession } from "next-auth";
+// import { redirect } from "next/navigation";
 import Sidebar from "@/components/map/Sidebar";
 import Script from "next/script";
 
@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default async function Layout({ children }: { children: ReactNode }) {
-  const session = await getServerSession();
+  // const session = await getServerSession();
 
-  if (!session) {
-    redirect("/signin");
-  }
+  // if (!session) {
+  //   redirect("/signin");
+  // }
 
   return (
     <div className="relative flex h-full flex-col">
